@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Eating Tips</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(44, 62, 80, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        h2 {
+            color: #ffcc00;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .tip {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            transition: background 0.3s;
+        }
+        .tip:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .tip h3 {
+            margin: 0 0 10px;
+            color: #ffcc00;
+        }
+        .faq {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .faq h3 {
+            cursor: pointer;
+            margin: 0;
+            color: #ffcc00;
+        }
+        .faq-content {
+            display: none;
+            margin-top: 10px;
+            color: #b0b0b0;
+        }
+        .explore-btn {
+            display: block;
+            margin: 20px auto;
+            background: #ffcc00;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .explore-btn:hover {
+            background-color: #e6b800;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /* New Styles */
+        .info-section {
+            background: rgba(44, 62, 80, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .info-section h3 {
+            color: #ffcc00;
+        }
+        .infographic {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .infographic div {
+            flex: 1 1 45%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .infographic div:hover {
+            transform: scale(1.05);
+        }
+        .recipe-suggestions {
+            margin-top: 20px;
+        }
+        .recipe-suggestion {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            transition: background 0.3s;
+        }
+        .recipe-suggestion:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .recipe-suggestion h4 {
+            color: #ffcc00;
+            margin: 0;
+        }
+        .recipe-details {
+            color: #b0b0b0;
+            display: none;
+        }
+        /* Meal Prep Section */
+        .meal-prep {
+            margin-top: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .meal-prep h3 {
+            color: #ffcc00;
+            text-align: center;
+        }
+        .meal-prep-item {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .meal-prep-item div {
+            flex: 1;
+        }
+        .meal-prep-item img {
+            width: 100px;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Healthy Eating Tips</h2>
+        
+        <div class="tip">
+            <h3>1. Include a Variety of Foods</h3>
+            <p>Eat a balanced diet with a variety of foods to ensure you're getting a range of nutrients.</p>
+        </div>
+
+        <div class="tip">
+            <h3>2. Stay Hydrated</h3>
+            <p>Drink plenty of water throughout the day to stay hydrated. Aim for at least 8 cups daily.</p>
+        </div>
+
+        <div class="tip">
+            <h3>3. Choose Whole Grains</h3>
+            <p>Opt for whole grains over refined grains to increase your fiber intake and improve digestion.</p>
+        </div>
+
+        <div class="tip">
+            <h3>4. Eat Plenty of Fruits and Vegetables</h3>
+            <p>Include a variety of colorful fruits and vegetables in your meals for essential vitamins and minerals.</p>
+        </div>
+
+        <div class="tip">
+            <h3>5. Limit Added Sugars and Salt</h3>
+            <p>Reduce your intake of foods high in added sugars and salt to promote better health.</p>
+        </div>
+
+        <div class="tip">
+            <h3>6. Practice Portion Control</h3>
+            <p>Be mindful of portion sizes to help manage your weight and avoid overeating.</p>
+        </div>
+
+        <div class="tip">
+            <h3>7. Plan Your Meals</h3>
+            <p>Plan your meals ahead of time to make healthier choices and avoid impulsive eating.</p>
+        </div>
+
+        <div class="tip">
+            <h3>8. Enjoy Your Meals</h3>
+            <p>Take time to enjoy your food. Eating slowly can help you recognize when you're full.</p>
+        </div>
+
+        <div class="info-section">
+            <h3>Nutrition Infographic</h3>
+            <div class="infographic">
+                <div>
+                    <h4>50% Fruits & Vegetables</h4>
+                    <p>Fill half your plate with colorful produce for essential vitamins!</p>
+                </div>
+                <div>
+                    <h4>25% Proteins</h4>
+                    <p>Lean meats, fish, beans, and nuts for muscle and tissue health.</p>
+                </div>
+                <div>
+                    <h4>25% Whole Grains</h4>
+                    <p>Whole grains provide fiber for digestion and sustained energy.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipe-suggestions">
+            <h3>Recipe Suggestions</h3>
+            <div class="recipe-suggestion" onclick="toggleRecipe('quinoaSalad')">
+                <h4>Quinoa Salad</h4>
+                <p>A refreshing mix of quinoa, vegetables, and dressing.</p>
+                <div class="recipe-details" id="quinoaSalad">
+                    <h5>Ingredients:</h5>
+                    <ul>
+                        <li>1 cup quinoa</li>
+                        <li>2 cups water</li>
+                        <li>1 cucumber, diced</li>
+                        <li>1 bell pepper, diced</li>
+                        <li>1/4 cup red onion, chopped</li>
+                        <li>1/4 cup parsley, chopped</li>
+                        <li>1/4 cup olive oil</li>
+                        <li>Juice of 1 lemon</li>
+                        <li>Salt and pepper to taste</li>
+                    </ul>
+                    <h5>Instructions:</h5>
+                    <ol>
+                        <li>Rinse the quinoa under cold water.</li>
+                        <li>In a pot, bring water to a boil, add quinoa, cover, and simmer for 15 minutes.</li>
+                        <li>Fluff with a fork and let it cool.</li>
+                        <li>In a bowl, combine quinoa, vegetables, olive oil, lemon juice, salt, and pepper.</li>
+                        <li>Toss well and serve chilled.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="recipe-suggestion" onclick="toggleRecipe('chickenVeggies')">
+                <h4>Grilled Chicken & Veggies</h4>
+                <p>A simple, healthy meal with protein and fiber.</p>
+                <div class="recipe-details" id="chickenVeggies">
+                    <h5>Ingredients:</h5>
+                    <ul>
+                        <li>4 chicken breasts</li>
+                        <li>2 cups mixed vegetables (zucchini, bell peppers, etc.)</li>
+                        <li>2 tablespoons olive oil</li>
+                        <li>1 teaspoon garlic powder</li>
+                        <li>Salt and pepper to taste</li>
+                    </ul>
+                    <h5>Instructions:</h5>
+                    <ol>
+                        <li>Preheat grill to medium heat.</li>
+                        <li>Rub chicken with olive oil, garlic powder, salt, and pepper.</li>
+                        <li>Grill chicken for 6-7 minutes per side until cooked through.</li>
+                        <li>Grill vegetables until tender, about 5-7 minutes.</li>
+                        <li>Serve chicken with grilled veggies on the side.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="recipe-suggestion" onclick="toggleRecipe('smoothie')">
+                <h4>Healthy Green Smoothie</h4>
+                <p>A nutritious smoothie packed with fruits and greens.</p>
+                <div class="recipe-details" id="smoothie">
+                    <h5>Ingredients:</h5>
+                    <ul>
+                        <li>1 banana</li>
+                        <li>1 cup spinach</li>
+                        <li>1/2 cup Greek yogurt</li>
+                        <li>1 cup almond milk</li>
+                        <li>1 tablespoon honey (optional)</li>
+                    </ul>
+                    <h5>Instructions:</h5>
+                    <ol>
+                        <li>Add all ingredients to a blender.</li>
+                        <li>Blend until smooth.</li>
+                        <li>Pour into a glass and enjoy immediately.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="recipe-suggestion" onclick="toggleRecipe('chickpeaCurry')">
+                <h4>Chickpea Curry</h4>
+                <p>A hearty and filling dish with spices and chickpeas.</p>
+                <div class="recipe-details" id="chickpeaCurry">
+                    <h5>Ingredients:</h5>
+                    <ul>
+                        <li>2 cans chickpeas, drained and rinsed</li>
+                        <li>1 onion, chopped</li>
+                        <li>2 cloves garlic, minced</li>
+                        <li>1 can diced tomatoes</li>
+                        <li>1 can coconut milk</li>
+                        <li>2 tablespoons curry powder</li>
+                        <li>Salt and pepper to taste</li>
+                        <li>Cilantro for garnish</li>
+                    </ul>
+                    <h5>Instructions:</h5>
+                    <ol>
+                        <li>In a pot, sauté onion and garlic until soft.</li>
+                        <li>Add curry powder and cook for 1 minute.</li>
+                        <li>Add chickpeas, tomatoes, and coconut milk.</li>
+                        <li>Simmer for 20 minutes, stirring occasionally.</li>
+                        <li>Season with salt and pepper, garnish with cilantro, and serve.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="recipe-suggestion" onclick="toggleRecipe('zucchiniNoodles')">
+                <h4>Zucchini Noodles with Pesto</h4>
+                <p>A low-carb alternative to pasta, topped with pesto.</p>
+                <div class="recipe-details" id="zucchiniNoodles">
+                    <h5>Ingredients:</h5>
+                    <ul>
+                        <li>2 medium zucchinis, spiralized</li>
+                        <li>1/4 cup pesto</li>
+                        <li>1/4 cup cherry tomatoes, halved</li>
+                        <li>1 tablespoon olive oil</li>
+                        <li>Salt and pepper to taste</li>
+                    </ul>
+                    <h5>Instructions:</h5>
+                    <ol>
+                        <li>Heat olive oil in a pan over medium heat.</li>
+                        <li>Add zucchini noodles and cook for 2-3 minutes until tender.</li>
+                        <li>Stir in pesto and cherry tomatoes, cooking for another minute.</li>
+                        <li>Season with salt and pepper, then serve warm.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="meal-prep">
+            <h3>Healthy Meal Prep Ideas</h3>
+            <div class="meal-prep-item">
+                <div>
+                    <h4>Overnight Oats Jars</h4>
+                    <p>Layer oats, milk, and toppings in jars for quick, nutritious breakfasts.</p>
+                    <p><strong>Tip:</strong> Use different fruits and nuts to mix flavors!</p>
+                </div>
+                
+            </div>
+
+            <div class="meal-prep-item">
+                <div>
+                    <h4>Grilled Chicken & Veggies</h4>
+                    <p>Batch cook grilled chicken and roasted vegetables for easy lunches.</p>
+                    <p><strong>Tip:</strong> Use different marinades to change up the taste!</p>
+                </div>
+                
+            </div>
+
+            <div class="meal-prep-item">
+                <div>
+                    <h4>Quinoa Bowls</h4>
+                    <p>Prepare quinoa bowls with beans, veggies, and sauces for versatile meals.</p>
+                    <p><strong>Tip:</strong> Add avocado or a poached egg for extra nutrition!</p>
+                </div>
+                
+            </div>
+            
+            <div class="meal-prep-item">
+                <div>
+                    <h4>Chickpea Salad</h4>
+                    <p>A quick and filling salad that’s perfect for meal prep.</p>
+                    <p><strong>Tip:</strong> Add feta cheese for extra flavor!</p>
+                </div>
+                
+            </div>
+
+            <div class="meal-prep-item">
+                <div>
+                    <h4>Stuffed Peppers</h4>
+                    <p>Bell peppers stuffed with quinoa, black beans, and spices.</p>
+                    <p><strong>Tip:</strong> Top with cheese before baking for a delicious finish!</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="explore-more">
+            <h3>Explore More Recipes</h3>
+            <ul>
+                <li><a href="https://www.allrecipes.com/" target="_blank" style="color: #ffcc00; text-decoration: none;">AllRecipes</a></li>
+                <li><a href="https://www.foodnetwork.com/" target="_blank" style="color: #ffcc00; text-decoration: none;">Food Network</a></li>
+                <li><a href="https://www.epicurious.com/" target="_blank" style="color: #ffcc00; text-decoration: none;">Epicurious</a></li>
+                <li><a href="https://www.cookinglight.com/" target="_blank" style="color: #ffcc00; text-decoration: none;">Cooking Light</a></li>
+                <li><a href="https://www.seriouseats.com/" target="_blank" style="color: #ffcc00; text-decoration: none;">Serious Eats</a></li>
+            </ul>
+       
+
+    <script>
+        function toggleRecipe(id) {
+            const details = document.getElementById(id);
+            if (details.style.display === 'none' || details.style.display === '') {
+                details.style.display = 'block';
+            } else {
+                details.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

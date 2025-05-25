@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Coaching Assessment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      text-align: center;
+    }
+    .header {
+      padding: 30px;
+      background: linear-gradient(90deg, #1f1f1f, #3a3a3a);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    .header p {
+      font-size: 1.2em;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+    .form-container input, .form-container select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      background: #2c2c2c;
+      color: #fff;
+    }
+    .form-container button {
+      width: 100%;
+      background: linear-gradient(90deg, #ffcc00, #e6b800);
+      border: none;
+      padding: 15px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .form-container button:hover {
+      background: linear-gradient(90deg, #e6b800, #ffcc00);
+      transform: scale(1.05);
+    }
+    #chartContainer {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .guidance {
+      margin-top: 20px;
+      background: #2c3e50;
+      padding: 20px;
+      border-radius: 10px;
+      color: #fff;
+    }
+    footer {
+      padding: 20px;
+      background-color: #2c3e50;
+      color: white;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Personalized Health Coaching Assessment</h1>
+    <p>Take the first step towards a healthier you!</p>
+  </div>
+
+  <div class="form-container">
+    <h2>Lifestyle Assessment Form</h2>
+    <form id="lifestyleForm">
+      <label for="exercise">Exercise Frequency:</label>
+      <select id="exercise" required>
+        <option value="" disabled selected>Select</option>
+        <option value="0">Never</option>
+        <option value="1">1-2 times a week</option>
+        <option value="2">3-4 times a week</option>
+        <option value="3">Daily</option>
+      </select>
+
+      <label for="diet">Diet Quality:</label>
+      <select id="diet" required>
+        <option value="" disabled selected>Select</option>
+        <option value="0">Poor</option>
+        <option value="1">Fair</option>
+        <option value="2">Good</option>
+        <option value="3">Excellent</option>
+      </select>
+
+      <label for="sleep">Sleep Quality:</label>
+      <select id="sleep" required>
+        <option value="" disabled selected>Select</option>
+        <option value="0">Poor</option>
+        <option value="1">Fair</option>
+        <option value="2">Good</option>
+        <option value="3">Excellent</option>
+      </select>
+
+      <label for="stress">Stress Level:</label>
+      <select id="stress" required>
+        <option value="" disabled selected>Select</option>
+        <option value="0">Low</option>
+        <option value="1">Moderate</option>
+        <option value="2">High</option>
+      </select>
+
+      <label for="water">Water Intake:</label>
+      <select id="water" required>
+        <option value="" disabled selected>Select</option>
+        <option value="0">Less than 1L</option>
+        <option value="1">1-2L</option>
+        <option value="2">More than 2L</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div id="chartContainer">
+    <canvas id="lifestyleChart"></canvas>
+  </div>
+
+  <div class="guidance" id="guidanceSection" style="display: none;">
+    <h2>Your Personalized Guidance</h2>
+    <p id="guidanceText"></p>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 ThriveGuide. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    document.getElementById('lifestyleForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const exercise = parseInt(document.getElementById('exercise').value);
+      const diet = parseInt(document.getElementById('diet').value);
+      const sleep = parseInt(document.getElementById('sleep').value);
+      const stress = parseInt(document.getElementById('stress').value);
+      const water = parseInt(document.getElementById('water').value);
+
+      const data = [exercise, diet, sleep, stress, water];
+      const labels = ['Exercise', 'Diet', 'Sleep', 'Stress', 'Water Intake'];
+
+      const ctx = document.getElementById('lifestyleChart').getContext('2d');
+      const lifestyleChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Lifestyle Assessment',
+            data: data,
+            backgroundColor: ['#ffcc00', '#e6b800', '#cc9900', '#b3b300', '#999900'],
+            borderColor: '#fff',
+            borderWidth: 1,
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            tooltip: {
+              callbacks: {
+                label: function(tooltipItem) {
+                  return tooltipItem.label + ': ' + tooltipItem.raw;
+                }
+              }
+            }
+          }
+        }
+      });
+
+      // Analyze the inputs and provide detailed guidance
+      let guidance = '';
+      if (exercise < 2) {
+        guidance += 'Exercise Frequency:\n';
+        guidance += 'Consider increasing your exercise frequency. Aim for at least 150 minutes of moderate aerobic activity each week. Start with activities you enjoy, like walking, cycling, or swimming, and gradually increase intensity and duration.\n\n';
+      }
+      if (diet < 2) {
+        guidance += 'Diet Quality:\n';
+        guidance += 'Improving your diet can significantly enhance your health. Focus on incorporating more fruits, vegetables, lean proteins, and whole grains into your meals. Try to reduce processed foods, added sugars, and unhealthy fats. Meal prepping can also help you make healthier choices.\n\n';
+      }
+      if (sleep < 2) {
+        guidance += 'Sleep Quality:\n';
+        guidance += 'Prioritizing quality sleep is essential for your well-being. Aim for 7-9 hours of uninterrupted sleep each night. Create a relaxing bedtime routine, avoid screens before bed, and keep your sleep environment dark and cool to improve sleep quality.\n\n';
+      }
+      if (stress > 1) {
+        guidance += 'Stress Level:\n';
+        guidance += 'Managing stress is crucial for your overall health. Explore techniques such as mindfulness, yoga, or deep-breathing exercises. Regular physical activity and engaging in hobbies can also help alleviate stress. Consider speaking to a professional if stress becomes overwhelming.\n\n';
+      }
+      if (water < 1) {
+        guidance += 'Water Intake:\n';
+        guidance += 'Staying hydrated is vital for optimal health. Aim to drink at least 2 liters of water a day. Consider carrying a reusable water bottle with you to encourage more frequent drinking. Remember that hydration needs can vary based on activity level and climate.\n\n';
+      }
+
+      // Display guidance
+      document.getElementById('guidanceText').innerText = guidance;
+      document.getElementById('guidanceSection').style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+

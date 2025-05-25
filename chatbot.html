@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness FAQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #e0e0e0; /* Light text color */
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #ffcc00; /* Gold color */
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #1e1e1e; /* Dark card background */
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+        }
+        .faq-section {
+            margin-bottom: 40px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 15px;
+            transition: background-color 0.3s;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-item:hover {
+            background-color: #292929; /* Lighter background on hover */
+        }
+        h2 {
+            font-size: 18px;
+            color: #ffcc00; /* Gold color for questions */
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .view-answer {
+            background-color: #ffcc00; /* Gold button */
+            color: #121212; /* Dark text color */
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .view-answer:hover {
+            background-color: #e6b800; /* Darker gold on hover */
+        }
+        .answer {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #292929; /* Dark answer background */
+            border-left: 4px solid #ffcc00; /* Gold border */
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fitness FAQ</h1>
+    <div class="faq-container">
+        <!-- Nutrition Questions -->
+        <div class="faq-section">
+            <h2>Nutrition</h2>
+            <div class="faq-item">
+                <h2>Q: What should I eat before a workout?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Eat a balanced meal with carbohydrates and protein about 2-3 hours before exercising.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How much water should I drink during exercise?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Aim for about 7-10 ounces of water every 10-20 minutes during exercise.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: What are the benefits of protein supplements?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: They help in muscle recovery, growth, and can be convenient for meeting protein needs.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: Is it better to eat before or after a workout?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: It depends on your goals; eating before can provide energy, while post-workout meals aid recovery.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: What are healthy snacks for weight loss?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Fruits, nuts, yogurt, and veggies with hummus are great options.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How can I improve my metabolism?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Regular exercise, strength training, and eating protein-rich foods can help boost metabolism.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: Are carbs bad for me?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Carbs are essential for energy; focus on whole grains, fruits, and vegetables rather than refined carbs.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: What is the role of fats in my diet?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Healthy fats are important for brain function, hormone production, and absorption of certain vitamins.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How can I get enough protein as a vegetarian?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Incorporate legumes, nuts, seeds, dairy, and plant-based protein sources into your meals.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: Should I count calories to lose weight?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Counting calories can help, but focus on the quality of food and mindful eating as well.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise Questions -->
+        <div class="faq-section">
+            <h2>Exercise</h2>
+            <div class="faq-item">
+                <h2>Q: How often should I exercise?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Aim for at least 150 minutes of moderate aerobic activity or 75 minutes of vigorous activity each week.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: What types of exercise are best for weight loss?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Cardiovascular exercises like running, cycling, and HIIT are effective for burning calories.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How can I build muscle quickly?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Focus on resistance training, consume enough protein, and ensure proper recovery.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: Should I lift weights every day?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: It's best to allow muscle groups to rest; aim for 2-3 times a week with rest days in between.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: What is the best time to work out?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: The best time is when you feel most energetic; consistency is key.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How do I start a fitness routine?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Start with small, manageable goals and gradually increase intensity and duration.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How can I stay active during the winter months?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Try indoor workouts, winter sports like skiing, or join a gym to stay active when it's cold outside.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: What should I do if I experience pain during exercise?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Stop exercising, rest, and consult a healthcare professional if the pain persists.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How can I avoid injury while exercising?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Warm up, use proper form, gradually increase intensity, and listen to your body.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How do I stay motivated to work out?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Set realistic goals, track progress, and find a workout buddy for support.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Health Questions -->
+        <div class="faq-section">
+            <h2>Health</h2>
+            <div class="faq-item">
+                <h2>Q: What are the benefits of yoga?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Yoga improves flexibility, strength, balance, and mental clarity while reducing stress and anxiety.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How can I improve my cardiovascular health?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Engage in regular aerobic exercise, eat a balanced diet, and avoid smoking.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: What is a healthy body fat percentage?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: For men, 10-20% and for women, 18-28% are considered healthy body fat percentages.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How does stress affect my fitness?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Chronic stress can hinder performance, recovery, and lead to unhealthy habits.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: What are the signs of overtraining?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Symptoms include fatigue, decreased performance, insomnia, and irritability.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How can I boost my immune system?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Regular exercise, a balanced diet, enough sleep, and managing stress contribute to a strong immune system.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: What role does sleep play in fitness?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Sleep is crucial for recovery, hormone regulation, and overall health.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: Can I exercise with a cold?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: If symptoms are above the neck (like a runny nose), light exercise is generally safe; consult a doctor if unsure.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How do I know if I'm dehydrated?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Symptoms include thirst, dark urine, fatigue, and dizziness.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: What should I do if I feel lightheaded during exercise?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Stop exercising, sit down, and hydrate; seek medical help if it persists.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Motivation Questions -->
+        <div class="faq-section">
+            <h2>Motivation</h2>
+            <div class="faq-item">
+                <h2>Q: How can I stay consistent with my workouts?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Set realistic goals, track progress, find a workout buddy, and celebrate small achievements.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: What are some ways to reward myself for working out?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Treat yourself to new workout gear, a massage, or a cheat meal.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How do I deal with gym anxiety?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Start with home workouts, go with a friend, and remember everyone is there to improve themselves.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How can I find a workout buddy?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Ask friends, join fitness classes, or use social media to find someone with similar goals.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: What motivates you to work out?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Personal goals, health improvements, and the enjoyment of physical activity can be motivating factors.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How can I set realistic fitness goals?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Use the SMART criteria: Specific, Measurable, Achievable, Relevant, and Time-bound.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: What if I miss a workout?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Don’t stress; just get back on track with your next scheduled workout.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How do I track my progress?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Use a fitness app, journal, or simply note your performance improvements.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: How can I make fitness a habit?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Consistency is key; set a schedule and treat workouts as unmissable appointments.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>Q: What if I don’t see results?</h2>
+                <button class="view-answer">View Answer</button>
+                <div class="answer">
+                    <p>A: Reassess your routine, consider consulting a trainer, and be patient; results take time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.view-answer').forEach(button => {
+            button.addEventListener('click', () => {
+                const answerDiv = button.nextElementSibling;
+                answerDiv.style.display = answerDiv.style.display === 'block' ? 'none' : 'block';
+                button.textContent = answerDiv.style.display === 'block' ? 'Hide Answer' : 'View Answer';
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+

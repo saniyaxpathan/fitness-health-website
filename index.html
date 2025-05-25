@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Counseling Website</title>
+  <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Booking Modal Styling */
+.booking-modal-content {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.booking-form input,
+.booking-form textarea {
+  padding: 12px 15px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+  resize: none;
+}
+
+.booking-row {
+  display: flex;
+  gap: 10px;
+}
+
+.booking-row input {
+  flex: 1;
+}
+
+.booking-form button {
+  margin-top: 10px;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #4a7c59; /* match your earthy theme */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.booking-form button:hover {
+  background-color: #3b6246;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+    /* Back-to-Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #ffcc00;
+      color: #121212;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+      transition: opacity 0.3s;
+    }
+    .back-to-top:hover {
+      background-color: #e6b800;
+      box-shadow: 0 0 20px #ffcc00;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 60px 20px;
+      background-color: #1e1e1e;
+      color: #fff;
+      text-align: center;
+    }
+    .testimonials h2 {
+      font-family: 'Playfair Display', serif;
+      color: #ffcc00;
+      margin-bottom: 30px;
+    }
+    .testimonial-card {
+      background-color: #292929;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      margin: 20px auto;
+      max-width: 600px;
+      color: #e0e0e0;
+    }
+    .testimonial-card p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+    .testimonial-card h3 {
+      margin-top: 15px;
+      font-size: 1.2em;
+      color: #ffcc00;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212; /* Dark background */
+      color: #e0e0e0; /* Light text color */
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    .navbar {
+      background-color: rgba(30, 30, 30, 0.9); /* Semi-transparent dark */
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffcc00; /* Gold color */
+    }
+    .nav-links a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #e0e0e0; /* Light text color */
+      font-weight: 600;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .nav-links a:hover {
+      color: #ffcc00; /* Gold hover color */
+      text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00; /* Lightning effect */
+    }
+    .login-btn {
+      color: #ffcc00;
+      cursor: pointer;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .login-btn:hover {
+      text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00;
+    }
+    .hero {
+      background-color: #ffffff; /* Light background */
+      color: #121212; /* Dark text color */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100vh;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    #particles-js {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1; /* Behind the content */
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2; /* Ensure content is above the background */
+    }
+    .highlight {
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #ffcc00;
+    }
+    .transform {
+      color: #ffcc00; /* Yellow color for "Transform" */
+    }
+    .cta-btn {
+      background: #ffcc00; /* Gold button */
+      border: none;
+      padding: 12px 24px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+    .cta-btn:hover {
+      background-color: #e6b800; /* Darker gold on hover */
+      transform: scale(1.05); /* Slight scale effect */
+      box-shadow: 0 0 20px #ffcc00; /* Lightning effect */
+    }
+     /* Login Modal */
+     .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    .modal-content {
+      background: #2c3e50;
+      padding: 40px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      position: relative;
+      animation: fadeIn 0.5s;
+    }
+    .close-modal {
+      color: #ffcc00;
+      font-size: 24px;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      cursor: pointer;
+    }
+    .modal h2 {
+      color: #ffcc00;
+      margin-bottom: 20px;
+    }
+    .modal input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+      font-size: 16px;
+    }
+    .login-modal-btn {
+      background: #ffcc00;
+      color: #121212;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .login-modal-btn:hover {
+      background-color: #e6b800;
+    }
+    .services, .about, .contact {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+    .services h2, .about h2, .contact h2 {
+      margin-bottom: 30px;
+      font-family: 'Playfair Display', serif;
+      color: #ffcc00; /* Gold color for headings */
+    }
+    .cards-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card {
+      background: #1e1e1e; /* Dark card background */
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+      flex: 1 1 30%;
+      min-width: 250px;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      background-color: #292929; /* Lighter background on hover */
+      box-shadow: 0 0 30px #ffcc00; /* Lightning effect */
+    }
+    .card a {
+      color: inherit;
+      text-decoration: none;
+      display: block; /* Make the whole card clickable */
+    }
+    .card a:hover {
+      color: #ffcc00; /* Change color on hover */
+      text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00; /* Lightning effect */
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #2c3e50;
+      color: white;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      color: #fff;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .social-icons a:hover {
+      color: #ffcc00; /* Gold hover color */
+      text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00; /* Lightning effect */
+    }
+    /* Lightning effect for Contact section inputs */
+    .contact input, .contact textarea {
+      transition: box-shadow 0.3s;
+    }
+    .contact input:hover, .contact textarea:hover {
+      box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00; /* Lightning effect */
+    }
+    @media (max-width: 768px) {
+      .cards-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<!-- Firebase App (Core SDK) -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+<!-- Firebase Authentication -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+<!-- Firebase Database -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">ThriveGuide</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <span class="login-btn" onclick="openModal()">Login</span>
+    </div>
+  </nav>
+  <!-- Login Modal -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <h2>Login</h2>
+      <input type="text" id="login-username" placeholder="Username" required>
+      <input type="password" id="login-password" placeholder="Password" required>
+
+      <button class="login-button" onclick="loginUser()">Login</button>
+    </div>
+  </div>
+  <!-- Booking Modal -->
+<div class="modal" id="bookingModal">
+  <div class="modal-content booking-modal-content">
+    <span class="close-modal" onclick="closeBookingModal()">&times;</span>
+    <h2 style="margin-bottom: 20px;">Book Appointment</h2>
+    <form onsubmit="submitBooking(event)">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <div class="booking-row">
+        <input type="date" required />
+        <input type="time" required />
+      </div>
+      <textarea placeholder="Your Message" rows="3"></textarea>
+      <button type="submit" class="login-modal-btn">Book Now</button>
+    </form>
+  </div>
+</div>
+ <section class="hero" id="home">
+    <div id="particles-js"></div> <!-- Particle Background -->
+    <div class="hero-content">
+      <h1><span class="transform">Transform</span> <span class="highlight">Your Life</span></h1>
+      <p>Discover a better version of yourself today!</p>
+      
+      <button class="cta-btn" onclick="openModal()">Join Now</button>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="cards-container">
+      <div class="card">
+        <a href="chatbot.html">
+          <h3>Fitness FAQ</h3>
+          <p>Questions about fitness? Check our FAQs for quick answers.</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="health.html">
+          <h3>Health Coaching</h3>
+          <p>Guidance to help you live a healthier life.</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="nutrition.html">
+          <h3>Nutrition Planning</h3>
+          <p>Customized meal plans for your lifestyle.</p>
+        </a>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px;">
+      <button class="cta-btn" onclick="openBookingModal()">Book Appointment</button>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>At ThriveGuide, we are passionate about empowering individuals on their journey to health and wellness. Our team of dedicated professionals specializes in fitness coaching, nutritional guidance, and holistic health practices to help you achieve your goals. With years of experience in the health and fitness industry, we understand that every individual's path is unique.
+
+      Our approach is personalized, ensuring that we provide tailored solutions that fit your lifestyle, preferences, and health needs. Whether you are looking to lose weight, build muscle, improve your overall health, or manage specific conditions like PCOD or PCOS, we are here to support you every step of the way.
+      
+      At ThriveGuide, we believe in the importance of a balanced approach to health, combining physical activity, nutrition, and mental well-being. Our mission is to inspire and motivate you to make lasting changes that lead to a healthier, happier life. Join us in transforming your health and wellness journey today!</p>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button class="cta-btn" type="submit">Send Message</button>
+    </form>
+    <!-- Testimonials Section -->
+  <section class="testimonials" id="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-card">
+      <p>"ThriveGuide has completely transformed my life. With their guidance, I've achieved my fitness goals and gained confidence like never before!"</p>
+      <h3>- Sarah J.</h3>
+    </div>
+    <div class="testimonial-card">
+      <p>"The nutrition plans and workout routines are tailored just for me, making my journey so much more enjoyable and effective. Highly recommend ThriveGuide!"</p>
+      <h3>- Mark R.</h3>
+    </div>
+    <div class="testimonial-card">
+      <p>"I struggled with consistency for years, but ThriveGuide's coaches kept me motivated and on track. I'm healthier and happier now."</p>
+      <h3>- Emily K.</h3>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Fitness Counsel. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </footer>
+   <!-- Back-to-Top Button -->
+   <div class="back-to-top" onclick="scrollToTop()">&#8679;</div>
+
+   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+   <script src="script.js"></script>
+   <script>
+     // Back-to-Top Button Visibility
+     window.onscroll = function() {
+       const backToTopButton = document.querySelector(".back-to-top");
+       if (document.documentElement.scrollTop > 300) {
+         backToTopButton.style.display = "block";
+       } else {
+         backToTopButton.style.display = "none";
+       }
+     };
+ 
+     // Smooth scroll to top
+     function scrollToTop() {
+       window.scrollTo({ top: 0, behavior: 'smooth' })
+     }
+     function openBookingModal() {
+  document.getElementById("bookingModal").style.display = "flex";
+}
+
+function closeBookingModal() {
+  document.getElementById("bookingModal").style.display = "none";
+}
+
+// Optional: Close modal if user clicks outside it
+window.onclick = function (e) {
+  const loginModal = document.getElementById("loginModal");
+  const bookingModal = document.getElementById("bookingModal");
+
+  if (e.target === loginModal) loginModal.style.display = "none";
+  if (e.target === bookingModal) bookingModal.style.display = "none";
+};
+</script>
+
+
+</body>
+</html>
+
